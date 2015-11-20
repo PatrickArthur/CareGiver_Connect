@@ -11,25 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024174951) do
+ActiveRecord::Schema.define(version: 20151120181319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "deployments", force: :cascade do |t|
+    t.integer  "user_id",     default: 0,  null: false
+    t.string   "name",        default: "", null: false
+    t.string   "description", default: "", null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "deployments", ["name"], name: "index_deployments_on_name", unique: true, using: :btree
+  add_index "deployments", ["user_id"], name: "index_deployments_on_user_id", unique: true, using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.boolean  "user_type",              default: true
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "account"
+    t.boolean  "admin"
+    t.string   "company"
+    t.string   "rscale_password"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

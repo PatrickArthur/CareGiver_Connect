@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PoliSci</title>
+  <title>Cloudgration</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -13,7 +13,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-          <h2 class"polisci">CareGiver Connect</h2>
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#" class="col-sm-12">
+              <img alt="Brand" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRpLfOMARXgSL2UHKvoLgM-kKFydAfQsbZ1Uyt0fLWcEJrB3779" height="30" width="200" >
+            </a>
+          </div>
         </div>
         <div class="col-sm-3 col-sm-offset-3">
           <% if user_signed_in? %>
@@ -26,8 +30,21 @@
       </div>
     </div>
   </div>
-
-  <%= yield %>
+  <div class="container">
+    <p><%= notice %></p>
+    <p><%= alert %></p>
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="chg-size6">
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <%= yield %>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

@@ -27,6 +27,11 @@ gem 'twitter-bootstrap-rails'
 
 gem 'email_validator', git: 'git@github.com:balexand/email_validator.git'
 
+gem 'right_aws_api'
+gem 'right_api_client'
+
+gem 'httparty'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

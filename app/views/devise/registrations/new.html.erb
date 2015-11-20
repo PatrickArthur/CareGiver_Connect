@@ -25,10 +25,13 @@
   </div>
 </div>
 
-<div class="radios">
-  <%= f.radio_button :user_type, false, checked: true %> Patient
-  <%= f.radio_button :user_type, true  %> Care Giver
-<div>
+<div class="form-group">
+  <%= f.label :account, class: "col-sm-4 control-label", for: "textinput"%>
+  <div class="col-sm-8">
+    <%= f.number_field :account, class: "form-control"%></br>
+    </br>
+  </div>
+</div>
 
 <div class="form-group">
   <div class="col-sm-offset-2 col-sm-10">

@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
    # layout :layout_by_resource
 
 
-  def after_sign_in_path_for(user)
-    user.present? ? user : new_user_path
-  end
+  # def after_sign_in_path_for(user)
+  #   user.present? ? user : users_path
+  # end
 
   layout Proc.new { |controller| controller.devise_controller? ? 'devise' : 'application' }
 

@@ -1,2 +1,18 @@
-<h4> Welcome to CareGiver Connect - in development </h4>
-View your <%= link_to "User", user_path(current_user) %> page
+<h4> Welcome to Cloudgration User Management</h4>
+</br>
+  <% if current_user.admin? %>
+  <%= link_to "Admin Section", new_admin_user_path %>
+  <% end %>
+</br>
+</br>
+  <%= link_to "Your Information", user_path(current_user.id) %></br></br>
+  <%= link_to "Your Deployments", user_deployments_path(current_user.id) %>
+</br>
+<hr>
+
+<h5> Registerd users for <b><%= current_user.company %></b> </h5>
+<% @users.each do |x| %>
+  <% if current_user.company == x.company && x != current_user %>
+    <%= x.email %> </br>
+  <% end %>
+<% end %>
