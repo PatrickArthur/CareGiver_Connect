@@ -1,6 +1,10 @@
 class Admin::UsersController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @users = User.where(company: user.company)
+  end
+
   def new
     @user = User.new()
   end
@@ -18,6 +22,10 @@ class Admin::UsersController < ApplicationController
   end
 
   private
+
+  def user
+    @user ||= current_user if current_user[:admin] == true
+  end
 
   def user_params
     params.require(:user).permit(

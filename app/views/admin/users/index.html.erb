@@ -1,0 +1,10 @@
+<h5> Registerd users for <b><%= current_user.company %></b> </h5>
+<% @users.each do |user| %>
+  <% if user != current_user %>
+    <p><%=link_to(user) do %> <%= user.email %> </p>
+    <% end %>
+  <% end %>
+<% end %></br>
+
+<%= link_to "New User", new_admin_user_path %></br>
+<%= link_to "Home", home_welcome_path %>

@@ -10,7 +10,6 @@ class CreateDeployments < ActiveRecord::Migration
 
     end
 
-    add_index :deployments, :user_id,                unique: true
     add_index :deployments, :name,                unique: true
   end
 end

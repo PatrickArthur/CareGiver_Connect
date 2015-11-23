@@ -8,10 +8,10 @@ class Rscale
   include ActiveModel::Model
   attr_accessor :email, :password, :account
 
-  def initialize(user_params)
-    @email = user_params['email']
-    @password = user_params['password']
-    @account = user_params['account']
+  def initialize(email, password, account)
+    @email = email
+    @password = password
+    @account = account
   end
 
   def client
@@ -25,22 +25,22 @@ class Rscale
     @current_servers ||= client.deployments.index
   end
 
-  def create_deployment
-    # name = "deployment[name]"
-    # desc = "deployment[description]"
-    # HTTParty.post("https://my.rightscale.com/api/deployments",\
-    #   :body => { name => "patest4", desc => "patest4"},\
-    #   :headers => { 'X-Api-Version'=> api_version, 'cookie' => mycookie})
+  def create_deployment(deploy_name, descrip)
+    name = "deployment[name]"
+    desc = "deployment[description]"
+    HTTParty.post("https://my.rightscale.com/api/deployments", :body => { name => deploy_name, desc => descrip}, :headers => { 'X-Api-Version'=> api_version, 'cookie' => mycookie})
+    rescue RestClient::Exception
+      "error"
   end
 
   private
 
 
   def mycookie
-    mycookie ||= client.last_request[:request].headers[:cookie]
+    @mycookie ||= client.last_request[:request].headers[:cookie]
   end
 
   def api_version
-    api_version ||= client.last_request[:request].headers['X-Api-Version']
+    @api_version ||= client.last_request[:request].headers["X_API_VERSION"]
   end
 end
